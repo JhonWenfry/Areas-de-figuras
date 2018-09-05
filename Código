@@ -1,0 +1,117 @@
+using System;
+
+namespace ConsoleApp1
+{
+    class Program
+    {
+        const double PI = 3.1416;
+        static int confirmacion()
+        {
+            int valor = 0;
+            bool comprobacion = true;
+            do
+            {
+                try
+                {
+                    valor = int.Parse(Console.ReadLine());
+                    comprobacion = true;
+                }
+                catch (Exception ex)
+                {
+                    Console.Clear();
+                    Console.WriteLine("Buenos dias, que area desea hallar ");
+                    Console.WriteLine(" ");
+                    Console.WriteLine("1. Area del rectangulo ");
+                    Console.WriteLine("2. Area del cuadrado ");
+                    Console.WriteLine("3. Area del triangulo ");
+                    Console.WriteLine("4. Area del circulo ");
+                    Console.WriteLine("5. Salir ");
+                    Console.WriteLine("Digite un valor correcto: ");
+                    comprobacion = false;
+                }
+            } while (comprobacion != true);
+            return valor;
+        }
+        static double areas(double LadoA, double LadoB = 0)
+        {
+            double area = 0;
+            if (LadoB == 0)
+            {
+                area = Math.Pow(LadoA, 2); 
+            }
+            else
+            {
+                area = LadoA*LadoB;
+            }
+            return area;
+        }
+       // static double areaCuadrado(double lado) => Math.Pow(lado, 2);
+       // static double areaCuadrado(double num1, double num2) => num1 * num2;
+        static double areaTriangulo(double num1, double num2) => (num1 * num2) / 2;
+        static double areaCirculo(double radio) => Math.Pow(radio, 2) * PI;
+        static void Main(string[] args)
+        {
+            Program obj = new Program();
+            Console.WriteLine("Buenos dias, desea hallar un area ");
+            Console.WriteLine("1. Area del rectangulo ");
+            Console.WriteLine("2. Area del cuadrado ");
+            Console.WriteLine("3. Area del triangulo ");
+            Console.WriteLine("4. Area del circulo ");
+            Console.WriteLine("5. Salir ");
+            int opc = confirmacion();
+            while (opc != 5)
+            {
+                double num1 = 0, num2 = 0;
+                switch (opc)
+                {
+                    case 1:
+                        Console.WriteLine("Ingrese el lado A ");
+                        num1 = confirmacion();
+                        Console.WriteLine("Ingrese el lado B ");
+                        num2 = confirmacion();
+                        Console.WriteLine("El area del rectangulo es: "+ areas(num1, num2));
+                        break;
+                    case 2:
+                        Console.WriteLine("Ingrese el lado A ");
+                        num1 = confirmacion();
+                        Console.WriteLine("El area del cuadrado es: "+ areas(num1));
+                        break;
+
+                    case 3:
+                        Console.WriteLine("Ingrese la base ");
+                        num1 = confirmacion();
+                        Console.WriteLine("Ingrese la altura ");
+                        num2 = confirmacion();
+                        Console.WriteLine("El area del triangulo es: " + areaTriangulo(num1, num2));
+                        break;
+                    case 4:
+                        Console.WriteLine("Ingrese el radio ");
+                        int radio = confirmacion();
+                        Console.WriteLine("El area del circulo es: " + areaCirculo(radio));
+                        break;
+                    case 5:
+                        break;
+                    default:
+                        Console.WriteLine("Buenos dias, desea hallar un area ");
+                        Console.WriteLine("1. Area del rectangulo ");
+                        Console.WriteLine("2. Area del cuadrado ");
+                        Console.WriteLine("3. Area del triangulo ");
+                        Console.WriteLine("4. Area del circulo ");
+                        Console.WriteLine("5. Salir ");
+                        Console.WriteLine("Ingrese un numero correcto  ");
+                        break;
+                }
+                Console.WriteLine(" ");
+                Console.WriteLine("Desea hallar otra area ");
+                Console.WriteLine("1. Area del rectangulo ");
+                Console.WriteLine("2. Area del cuadrado ");
+                Console.WriteLine("3. Area del triangulo ");
+                Console.WriteLine("4. Area del circulo ");
+                Console.WriteLine("5. Salir ");
+                opc = confirmacion();
+               // Console.Clear();
+            }
+        }
+    }
+}
+
